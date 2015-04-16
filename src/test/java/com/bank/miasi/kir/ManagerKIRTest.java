@@ -40,7 +40,7 @@ public class ManagerKIRTest {
     public void setUp() {
         
         symulator = new SymulatorZewnetrznegoKIR();
-        symulator.zasymuluj(symulator, 100); 
+        symulator.zasymuluj(symulator, 100);
         manager = new ManagerKIR(symulator, 4, "test");
     }
     

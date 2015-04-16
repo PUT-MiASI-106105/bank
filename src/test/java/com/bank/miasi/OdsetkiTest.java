@@ -64,7 +64,7 @@ public class OdsetkiTest {
         BigDecimal stanKonta = new BigDecimal("1000");
         LokataOptymalna lokata = new LokataOptymalna();
         
-        BigDecimal expResult = new BigDecimal("5.94");
+        BigDecimal expResult = new BigDecimal("0.59");
         
         OdsetkiStateLokataOptymalna odsetki = new OdsetkiStateLokataOptymalna();
         BigDecimal result = odsetki.obliczOdsetki(stanKonta, lokata);
@@ -103,7 +103,7 @@ public class OdsetkiTest {
         BigDecimal stanKonta = new BigDecimal("100000.59");
         LokataOptymalna lokata = new LokataOptymalna();
         
-        BigDecimal expResult = new BigDecimal("594.52");
+        BigDecimal expResult = new BigDecimal("59.45");
         OdsetkiStateLokataOptymalna odsetki = new OdsetkiStateLokataOptymalna();
         BigDecimal result = odsetki.obliczOdsetki(stanKonta, lokata);
         assertEquals(expResult, result);

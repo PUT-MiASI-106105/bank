@@ -6,6 +6,7 @@ package com.bank.miasi;
 
 import com.bank.miasi.konta.typy.TypKonta;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  *
@@ -19,9 +20,12 @@ public class OdsetkiStateLokataOptymalna implements OdsetkiState{
         BigDecimal procent = typKonta.getOprocentowanie();
 
         wynik = stanKonta;
-        wynik.multiply(procent);
-        wynik.multiply(new BigDecimal(typKonta.getOkresRozliczeniowy()));
-        wynik.divide(new BigDecimal(365));
+        wynik = wynik.multiply(procent);
+        wynik = wynik.divide(new BigDecimal("100"), BigDecimal.ROUND_DOWN);
+        wynik = wynik.multiply(new BigDecimal(typKonta.getOkresRozliczeniowy()));
+        wynik = wynik.divide(new BigDecimal("365"), BigDecimal.ROUND_DOWN);
+        
+        wynik = wynik.setScale(2, RoundingMode.DOWN);
 
         return wynik;
     }

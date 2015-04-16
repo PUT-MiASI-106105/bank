@@ -1,11 +1,12 @@
 package com.bank.miasi.kir;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class ManagerKIR {
 
-    private List<Paczka> listaPaczekDoWyslania;
+    private List<Paczka> listaPaczekDoWyslania = new ArrayList<>();
     private int idBanku;
     private final KIR kir;
     private final String haslo;
@@ -19,7 +20,7 @@ public class ManagerKIR {
     public void pobierzPaczki() {
         UUID sesja = kir.zaloguj(idBanku, haslo);
         for (Paczka paczka : kir.sciagnijPaczkiDoBanku(sesja)) {
-            przetworzPaczke(paczka.getPrzesylka());
+            listaPaczekDoWyslania.add(paczka);
         }
     }
 
@@ -37,8 +38,9 @@ public class ManagerKIR {
     public void dodajPaczkeDoWyslania(int idBankuDocelowego, Przesylka przesylka) {
         this.listaPaczekDoWyslania.add(new Paczka(idBanku, idBankuDocelowego, przesylka));
     }
-
+    
     public int getBankId() {
         return idBanku;
     }
+
 }
