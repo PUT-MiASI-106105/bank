@@ -6,6 +6,8 @@ import com.bank.miasi.konta.typy.TypKonta;
 import com.bank.miasi.exceptions.BlednaKwota;
 import com.bank.miasi.exceptions.NieWystarczajacoSrodkow;
 import com.bank.miasi.exceptions.NiewspieranaOperacja;
+import com.bank.miasi.wizytator.ProduktBankowy;
+import com.bank.miasi.wizytator.Raport;
 import java.math.BigDecimal;
 
 /**
@@ -31,4 +33,11 @@ public class Pozyczka extends Konto {
         stan = stan.add(ile);
         historia.add(operacjaBankowa);
     }
+
+    @Override
+    public ProduktBankowy accept(Raport raport) {
+        return raport.visit(this); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }

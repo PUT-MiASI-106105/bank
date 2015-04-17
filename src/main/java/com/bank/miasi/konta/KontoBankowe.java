@@ -6,6 +6,8 @@ import com.bank.miasi.exceptions.BlednaKwota;
 import com.bank.miasi.OperacjaBankowa;
 import com.bank.miasi.konta.typy.TypKonta;
 import com.bank.miasi.exceptions.NiewspieranaOperacja;
+import com.bank.miasi.wizytator.ProduktBankowy;
+import com.bank.miasi.wizytator.Raport;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,6 +22,10 @@ public class KontoBankowe extends Konto {
 
     private BigDecimal debet = BigDecimal.ZERO;
 
+    public KontoBankowe()
+    {
+        super();
+    }
     public KontoBankowe(TypKonta typ, String numer, Klient wlasciciel) {
         super(typ, numer, wlasciciel);
     }
@@ -37,4 +43,17 @@ public class KontoBankowe extends Konto {
         historia.add(operacjaBankowa);
     }
 
+    @Override
+    public ProduktBankowy accept(Raport raport) {
+        return raport.visit(this); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public BigDecimal getDebet() {
+        return debet;
+    }
+    
+    public void setDebet(BigDecimal debet) {
+        this.debet = debet;
+    }
+    
 }

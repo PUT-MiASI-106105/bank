@@ -4,6 +4,8 @@ import com.bank.miasi.Klient;
 import com.bank.miasi.OperacjaBankowa;
 import com.bank.miasi.konta.typy.TypKonta;
 import com.bank.miasi.exceptions.NiewspieranaOperacja;
+import com.bank.miasi.wizytator.Element;
+import com.bank.miasi.wizytator.ProduktBankowy;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +16,7 @@ import java.util.List;
  *
  * @author Krzysztof
  */
-public abstract class Konto {
+public abstract class Konto extends ProduktBankowy{
 
     protected BigDecimal stan = BigDecimal.ZERO;
     protected TypKonta typ;
@@ -22,7 +24,7 @@ public abstract class Konto {
     private String numer;
     private Klient wlasciciel;
 
-    private Konto() {
+    public Konto() {
     }
 
     public Konto(TypKonta typ, String numer, Klient wlasciciel) {
@@ -37,6 +39,10 @@ public abstract class Konto {
 
     public TypKonta getTyp() {
         return typ;
+    }
+    
+    public List<OperacjaBankowa> getHistoria() {
+        return historia;
     }
 
     public List<OperacjaBankowa> getHistoria(Date odKiedy, Date doKiedy) {

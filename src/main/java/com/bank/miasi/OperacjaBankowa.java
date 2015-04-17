@@ -6,13 +6,14 @@ import com.bank.miasi.exceptions.NiewspieranaOperacja;
 import com.bank.miasi.kir.ManagerKIR;
 import com.bank.miasi.kir.Przesylka;
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
  *
  * @author Krzysztof
  */
-public class OperacjaBankowa {
+public class OperacjaBankowa{
 
     private TypOperacji typOperacji;
     private BigDecimal kwota;
@@ -73,5 +74,4 @@ public class OperacjaBankowa {
     private OperacjaBankowa reverse() {
         return new OperacjaBankowa(typOperacji.getReverse(), kwota, tytul, odKogo, doKogo, data);
     }
-
 }

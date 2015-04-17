@@ -6,6 +6,8 @@ import com.bank.miasi.konta.typy.TypKonta;
 import com.bank.miasi.exceptions.BlednaKwota;
 import com.bank.miasi.exceptions.NieWystarczajacoSrodkow;
 import com.bank.miasi.exceptions.NiewspieranaOperacja;
+import com.bank.miasi.wizytator.ProduktBankowy;
+import com.bank.miasi.wizytator.Raport;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,11 @@ public class Lokata extends Konto{
     @Override
     public void wplata(OperacjaBankowa operacjaBankowa) throws NiewspieranaOperacja {
             throw new NiewspieranaOperacja();
+    }
+
+    @Override
+    public ProduktBankowy accept(Raport raport) {
+        return raport.visit(this); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
