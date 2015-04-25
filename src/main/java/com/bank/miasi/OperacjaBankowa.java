@@ -62,7 +62,7 @@ public class OperacjaBankowa{
         return data;
     }
 
-    private OperacjaBankowa(TypOperacji typOperacji, BigDecimal kwota, String tytul, Konto odKogo, Konto doKogo, Date data) {
+    public OperacjaBankowa(TypOperacji typOperacji, BigDecimal kwota, String tytul, Konto odKogo, Konto doKogo, Date data) {
         this.typOperacji = typOperacji;
         this.kwota = kwota;
         this.tytul = tytul;

@@ -24,7 +24,9 @@ public class KwotaFilter extends Filter{
     public void wykonajFilter()
     {
         BigDecimal kwota = new BigDecimal("20000");
-        if (operacjaBankowa.getKwota().compareTo(kwota) > 0)
+        BigDecimal kwotaDlaWychodzacych = new BigDecimal("-20000");
+             
+        if (operacjaBankowa.getKwota().compareTo(kwota) > 0 || operacjaBankowa.getKwota().compareTo(kwotaDlaWychodzacych) < 0)
         {
             System.err.println("Przelew trafia do wyjasnienia");
         }

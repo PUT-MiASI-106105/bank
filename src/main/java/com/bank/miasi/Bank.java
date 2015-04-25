@@ -18,18 +18,19 @@ import java.util.List;
 public class Bank {
     
     private List<Konto> konta;
-    private int idBanku;
+    private String idBanku;
     private String nazwaBanku;
     private String adresBanku;
     protected Mediator mediator;
     
-    public Bank (Mediator mediator, List <Konto> konta, int idBanku, String nazwaBanku, String adresBanku)
+    public Bank (Mediator mediator, List <Konto> konta, String idBanku, String nazwaBanku, String adresBanku)
     {
        this.mediator = mediator;
        this.konta = konta;
        this.idBanku = idBanku;
        this.adresBanku = adresBanku;
        this.nazwaBanku = nazwaBanku;
+       this.mediator.dodajBank(idBanku, this);
     }
     
     public Konto pobierzKonto(String numerKonta)

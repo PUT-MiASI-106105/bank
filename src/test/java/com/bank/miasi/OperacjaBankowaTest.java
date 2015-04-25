@@ -5,6 +5,7 @@
  */
 package com.bank.miasi;
 
+import com.bank.chainsOfResponsibility.KwotaFilter;
 import com.bank.miasi.exceptions.NieWystarczajacoSrodkow;
 import com.bank.miasi.exceptions.NiewspieranaOperacja;
 import com.bank.miasi.kir.ManagerKIR;
@@ -19,6 +20,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Filter;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -111,6 +113,40 @@ public class OperacjaBankowaTest {
 
     private void InicjujWartosc(double ile, Konto konto) throws NiewspieranaOperacja {
         OperacjaBankowa.wykonajOperacje(managerKIR, new BigDecimal(ile), new Wplata(), "wplata Poczatkowa", konto, null);
+    }
+    
+    @Test
+    public void testWykonajOperacjeFiltry() throws NiewspieranaOperacja
+    {
+       BigDecimal kwota = new BigDecimal("100.0");
+        TypOperacji typOperacji = new PrzelewWychodzacy();
+        InicjujWartosc(1000.0, kontoKlient1);
+        InicjujWartosc(1000.0, kontoKlient2);
+        String tytul = "test";
+
+        OperacjaBankowa operacja = new OperacjaBankowa(typOperacji, kwota, tytul, kontoKlient1, kontoKlient1, null);
+        
+        KwotaFilter kwotaFilter = new KwotaFilter(operacja);
+        kwotaFilter.wykonajFilter();
+        
+        assertEquals(new BigDecimal("900.0"), operacja.getDoKogo().getStan());
+    }
+    
+    @Test
+    public void testWykonajOperacjePowyzej20000Filtry() throws NiewspieranaOperacja
+    {
+       BigDecimal kwota = new BigDecimal("21000.0");
+        TypOperacji typOperacji = new PrzelewWychodzacy();
+        InicjujWartosc(25000.0, kontoKlient1);
+        InicjujWartosc(30000.0, kontoKlient2);
+        String tytul = "test";
+
+        OperacjaBankowa operacja = new OperacjaBankowa(typOperacji, kwota, tytul, kontoKlient1, kontoKlient1, null);
+        
+        KwotaFilter kwotaFilter = new KwotaFilter(operacja);
+        kwotaFilter.wykonajFilter();
+        
+        assertEquals(new BigDecimal("25000.0"), operacja.getDoKogo().getStan());
     }
 
 }
