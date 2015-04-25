@@ -66,5 +66,10 @@ public abstract class Konto extends ProduktBankowy{
     public int getBankId(){
         return Integer.parseInt(numer.substring(0,1));
     }
+    
+    public void wplacKwote(BigDecimal kwota)
+    {
+        this.stan = this.stan.add(kwota);
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.bank.miasi.service;
 
+import com.bank.miasi.Bank;
 import com.bank.miasi.Klient;
 import com.bank.miasi.OperacjaBankowa;
 import com.bank.miasi.dekorator.KontoBankoweDekorator;
@@ -16,6 +17,7 @@ import com.bank.miasi.konta.Pozyczka;
 import com.bank.miasi.konta.typy.KontoWygodne;
 import com.bank.miasi.konta.typy.LokataOptymalna;
 import com.bank.miasi.konta.typy.LokataRoczna;
+import com.bank.miasi.mediator.PrzelewyMediator;
 import com.bank.miasi.operacje.PrzelewWychodzacy;
 import com.bank.miasi.test.SymulatorZewnetrznegoKIR;
 import java.math.BigDecimal;
@@ -27,7 +29,7 @@ import java.util.List;
  * @author Krzysztof
  */
 public class BankController {
-
+    
     public static List<ProduktBankowy> przygotujRaport(Raport report, List<ProduktBankowy> products)
     {
         List<ProduktBankowy> result = new ArrayList<ProduktBankowy>();
