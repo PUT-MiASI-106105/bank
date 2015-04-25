@@ -35,14 +35,30 @@ public class PrzelewyMediator implements Mediator{
     @Override
     public void przelejNaRachunek(String numerKontaNadawcy, String numerKontaOdbiorcy, BigDecimal kwota) {
         String klucz = numerKontaOdbiorcy.substring(0,2);
+       
         Bank bank = listaBankow.get(klucz);
         
-        this.przelej (numerKontaNadawcy, bank, kwota);
+        if (bank != null)
+        {
+            this.przelej (numerKontaNadawcy, bank, kwota);
+        }
+        else
+        {
+            System.err.println("Nie istnieje bank dla podanego numeru konta");
+        }
     }
     
     private void przelej(String numerKontaNadawcy, Bank bank, BigDecimal kwota) {
         
         Konto konto = bank.pobierzKonto(numerKontaNadawcy);
-        konto.wplacKwote(kwota); 
+        
+        if (konto != null)
+        {
+            konto.wplacKwote(kwota); 
+        }
+        else
+        {
+            System.err.println("Nie istnieje konto o podanym numerze");
+        }
     }
 }
