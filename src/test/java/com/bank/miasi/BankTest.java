@@ -5,7 +5,6 @@
  */
 package com.bank.miasi;
 
-import com.bank.miasi.dekorator.KontoBankoweDekorator;
 import com.bank.miasi.konta.Konto;
 import com.bank.miasi.konta.KontoBankowe;
 import com.bank.miasi.konta.typy.KontoWygodne;

@@ -46,18 +46,7 @@ public class BankControllerTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of main method, of class BankController.
-     */
-    @org.junit.Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        BankController.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
+
     @org.junit.Test
     public void testMediator() {
         
@@ -84,7 +73,7 @@ public class BankControllerTest {
         Bank b1 = new Bank(mediator, listaKontDlaBankuB1, "02", "BZWBK", "test");
         Bank b2 = new Bank(mediator, listaKontDlaBankuB2, "04", "PKO", "test");
         
-        mediator.przelejNaRachunek("04113", "02124", new BigDecimal("100.0"));
+        mediator.przelejNaRachunek("02124", "04113", new BigDecimal("100.0"));
         
         assertEquals(new BigDecimal("100.0"), b2.pobierzKonto("04113").getStan());
     }

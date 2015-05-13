@@ -14,7 +14,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.lang.reflect.*;
-import com.bank.miasi.kir.ManagerKIR;
 import java.math.BigDecimal;
 import java.util.List;
 /**

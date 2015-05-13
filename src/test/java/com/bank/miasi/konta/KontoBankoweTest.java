@@ -8,11 +8,9 @@ package com.bank.miasi.konta;
 
 import com.bank.miasi.Klient;
 import com.bank.miasi.OperacjaBankowa;
-import com.bank.miasi.OperacjaBankowaTest;
 import com.bank.miasi.konta.typy.KontoWygodne;
 import java.math.BigDecimal;
 import org.easymock.EasyMock;
-import org.easymock.Mock;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -50,6 +48,7 @@ public class KontoBankoweTest {
 
     /**
      * Test of wplata method, of class KontoBankowe.
+     * @throws java.lang.Exception
      */
     @Test
     public void testWplata() throws Exception {

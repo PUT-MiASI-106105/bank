@@ -20,7 +20,6 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Filter;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -67,6 +66,7 @@ public class OperacjaBankowaTest {
 
     /**
      * Test of wykonajOperacje method, of class OperacjaBankowa.
+     * @throws java.lang.Exception
      */
     @Test
     public void testWykonajOperacje() throws Exception {
@@ -97,6 +97,7 @@ public class OperacjaBankowaTest {
 
     /**
      * Test of wykonajOperacje method, of class OperacjaBankowa.
+     * @throws java.lang.Exception
      */
     @Test(expected = NieWystarczajacoSrodkow.class)
     public void testWykonajOperacjeBezSrodkow() throws Exception {
@@ -146,7 +147,7 @@ public class OperacjaBankowaTest {
         KwotaFilter kwotaFilter = new KwotaFilter(operacja);
         kwotaFilter.wykonajFilter();
         
-        assertEquals(new BigDecimal("25000.0"), operacja.getDoKogo().getStan());
+        assertEquals(new BigDecimal("25000"), operacja.getDoKogo().getStan());
     }
 
 }
