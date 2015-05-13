@@ -23,6 +23,7 @@ public class Wplata implements TypOperacji {
         return kwota;
     }
 
+    @Override
     public TypOperacji getReverse() {
         return null;
     }

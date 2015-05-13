@@ -9,10 +9,7 @@ import com.bank.miasi.exceptions.NiewspieranaOperacja;
 import com.bank.miasi.wizytator.ProduktBankowy;
 import com.bank.miasi.wizytator.Raport;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+
 
 /**
  *

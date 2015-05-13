@@ -6,7 +6,6 @@ import com.bank.miasi.exceptions.NiewspieranaOperacja;
 import com.bank.miasi.kir.ManagerKIR;
 import com.bank.miasi.kir.Przesylka;
 import java.math.BigDecimal;
-import java.util.Comparator;
 import java.util.Date;
 
 /**

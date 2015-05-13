@@ -8,7 +8,6 @@ package com.bank.miasi.dekorator;
 import com.bank.miasi.wizytator.Element;
 import com.bank.miasi.wizytator.ProduktBankowy;
 import com.bank.miasi.wizytator.Raport;
-import com.bank.miasi.konta.Konto;
 import com.bank.miasi.konta.KontoBankowe;
 
 /**

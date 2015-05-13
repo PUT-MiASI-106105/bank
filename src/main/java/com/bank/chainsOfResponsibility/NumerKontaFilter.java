@@ -7,7 +7,6 @@ package com.bank.chainsOfResponsibility;
 
 import com.bank.miasi.OperacjaBankowa;
 import com.bank.miasi.exceptions.NiewspieranaOperacja;
-import java.math.BigDecimal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,12 +14,13 @@ import java.util.logging.Logger;
  *
  * @author nowekonto
  */
-public class NumerKontaFilter extends Filter{
+public class NumerKontaFilter extends Filter {
 
     public NumerKontaFilter(OperacjaBankowa operacja) {
         super(operacja);
     }
     
+    @Override
     public void wykonajFilter()
     {
         if (operacjaBankowa.getDoKogo().getNumer() == null)

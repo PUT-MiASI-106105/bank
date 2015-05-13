@@ -6,11 +6,7 @@
 package com.bank.miasi.mediator;
 
 import com.bank.miasi.Bank;
-import com.bank.miasi.kir.ManagerKIR;
-import com.bank.miasi.kir.Paczka;
-import com.bank.miasi.kir.Przesylka;
 import com.bank.miasi.konta.Konto;
-import com.bank.miasi.test.SymulatorZewnetrznegoKIR;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;

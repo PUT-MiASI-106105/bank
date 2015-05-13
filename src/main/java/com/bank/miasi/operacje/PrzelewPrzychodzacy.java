@@ -23,6 +23,7 @@ public class PrzelewPrzychodzacy implements TypOperacji {
         return kwota;
     }
 
+    @Override
     public TypOperacji getReverse() {
         return new PrzelewWychodzacy();
     }

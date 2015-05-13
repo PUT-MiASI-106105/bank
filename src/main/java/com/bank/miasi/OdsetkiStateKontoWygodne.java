@@ -29,7 +29,4 @@ public class OdsetkiStateKontoWygodne implements OdsetkiState{
         
         return wynik;
     }
-
-
-    
 }

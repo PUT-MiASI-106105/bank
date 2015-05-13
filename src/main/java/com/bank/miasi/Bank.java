@@ -7,7 +7,6 @@ package com.bank.miasi;
 
 import com.bank.miasi.konta.Konto;
 import com.bank.miasi.mediator.Mediator;
-import com.bank.miasi.mediator.PrzelewyMediator;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -43,7 +42,6 @@ public class Bank {
             {
                kontoWynikowe = konto; 
             }
-            
         }
         
         return kontoWynikowe;

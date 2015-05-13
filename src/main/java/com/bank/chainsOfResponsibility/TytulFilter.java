@@ -20,9 +20,12 @@ public class TytulFilter extends Filter{
        nastepnyFilter = new NumerKontaFilter(operacja); 
     }
     
+    /**
+     *
+     */
+    @Override
     public void wykonajFilter()
     {
-        BigDecimal kwota = new BigDecimal("20000");
         if (operacjaBankowa.getTytul() == null)
         {
             System.err.println("Przelew nie ma tytułu");

@@ -18,7 +18,6 @@ public class Autoryzator {
         UUID gID = UUID.randomUUID();
         if (klient.checkHaslo(hasloUUID)) {
             this.ID = gID;
-
         }
     }
 
