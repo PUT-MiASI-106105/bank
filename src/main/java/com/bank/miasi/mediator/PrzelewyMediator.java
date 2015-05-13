@@ -30,13 +30,13 @@ public class PrzelewyMediator implements Mediator{
 
     @Override
     public void przelejNaRachunek(String numerKontaNadawcy, String numerKontaOdbiorcy, BigDecimal kwota) {
-        String klucz = numerKontaNadawcy.substring(0,2);
+        String klucz = numerKontaOdbiorcy.substring(0,2);
        
         Bank bank = listaBankow.get(klucz);
         
         if (bank != null)
         {
-            this.przelej (numerKontaNadawcy, bank, kwota);
+            this.przelej (numerKontaOdbiorcy, bank, kwota);
         }
         else
         {
