@@ -9,8 +9,15 @@ import com.bank.miasi.Bank;
 import com.bank.miasi.Klient;
 import com.bank.miasi.konta.Konto;
 import com.bank.miasi.konta.KontoBankowe;
+import com.bank.miasi.konta.Lokata;
+import com.bank.miasi.konta.Pozyczka;
 import com.bank.miasi.konta.typy.KontoWygodne;
+import com.bank.miasi.konta.typy.LokataOptymalna;
+import com.bank.miasi.konta.typy.LokataRoczna;
 import com.bank.miasi.mediator.PrzelewyMediator;
+import com.bank.miasi.wizytator.ProduktBankowy;
+import com.bank.miasi.wizytator.Raport;
+import com.bank.miasi.wizytator.RaportKontaTypLokataRoczna;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +25,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -76,5 +82,42 @@ public class BankControllerTest {
         mediator.przelejNaRachunek("02124", "04113", new BigDecimal("100.0"));
         
         assertEquals(new BigDecimal("100.0"), b2.pobierzKonto("04113").getStan());
+    }
+    
+    @org.junit.Test
+    public void testRaportStan() {
+        
+        List<ProduktBankowy> result = new ArrayList<>();
+        List<ProduktBankowy> products = new ArrayList<>();
+        List<ProduktBankowy> expected = new ArrayList<>();
+        
+        Klient klient1 = new Klient("imie", "nazwisko", "adres", "pesel", "nip", "numer", BigDecimal.ZERO);
+        products.add(new Lokata(new LokataRoczna(), "12345", klient1, new BigDecimal("1000")));
+        expected.add(new Lokata(new LokataRoczna(), "12345", klient1, new BigDecimal("1000")));
+        
+        products.add(new Lokata(new LokataRoczna(), "12345", klient1, new BigDecimal("2000")));
+        expected.add(new Lokata(new LokataRoczna(), "12345", klient1, new BigDecimal("2000")));
+        
+        products.add(new Lokata(new LokataRoczna(), "12345", klient1, new BigDecimal("4000")));
+        expected.add(new Lokata(new LokataRoczna(), "12345", klient1, new BigDecimal("4000")));
+        
+        products.add(new Pozyczka(new LokataOptymalna(), "12345", klient1, new BigDecimal("5000")));
+        
+        products.add(new KontoBankowe(new LokataRoczna(), "12345", klient1));
+        expected.add(new KontoBankowe(new LokataRoczna(), "12345", klient1));
+        
+        Raport report = new RaportKontaTypLokataRoczna();
+        
+        for (ProduktBankowy product : products) { 
+            
+            ProduktBankowy productObject = product.accept(report);
+            
+            if (productObject != null)
+            {
+                result.add(productObject);
+            }
+        }
+        
+        assertEquals(expected.size(), result.size());
     }
 }

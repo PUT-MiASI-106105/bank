@@ -27,7 +27,4 @@ public class Test {
         BigDecimal oprocentowanie2 = od.obliczOdsetki(lokata.getStan(), lokata.getTyp());
         System.out.println(oprocentowanie2);
     }
-
-
-
 }

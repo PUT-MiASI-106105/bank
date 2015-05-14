@@ -6,7 +6,6 @@
 package com.bank.chainsOfResponsibility;
 
 import com.bank.miasi.OperacjaBankowa;
-import java.math.BigDecimal;
 
 /**
  *

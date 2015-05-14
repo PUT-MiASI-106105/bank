@@ -14,6 +14,10 @@ import java.math.RoundingMode;
  */
 public class OdsetkiStateLokataRoczna implements OdsetkiState{
 
+    private static final Integer dzielnik = 100;
+    private static final Integer liczbaDniRoku = 365;
+    private static final Integer wynikMiejscaPoPrzecinku = 2;
+    
     @Override
     public BigDecimal obliczOdsetki( BigDecimal stanKonta, TypKonta typKonta) {
         BigDecimal wynik = null;
@@ -21,11 +25,11 @@ public class OdsetkiStateLokataRoczna implements OdsetkiState{
 
         wynik = stanKonta;
         wynik = wynik.multiply(procent);
-        wynik = wynik.divide(new BigDecimal ("100"), BigDecimal.ROUND_DOWN);
+        wynik = wynik.divide(new BigDecimal (dzielnik), BigDecimal.ROUND_DOWN);
         wynik = wynik.multiply(new BigDecimal(typKonta.getOkresRozliczeniowy()));
-        wynik = wynik.divide(new BigDecimal("365"),BigDecimal.ROUND_DOWN);
+        wynik = wynik.divide(new BigDecimal(liczbaDniRoku),BigDecimal.ROUND_DOWN);
         
-        wynik = wynik.setScale(2, RoundingMode.DOWN);
+        wynik = wynik.setScale(wynikMiejscaPoPrzecinku, RoundingMode.DOWN);
 
         return wynik;
     }

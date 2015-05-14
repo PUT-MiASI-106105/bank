@@ -9,8 +9,6 @@ import com.bank.miasi.OperacjaBankowa;
 import com.bank.miasi.konta.KontoBankowe;
 import com.bank.miasi.konta.Lokata;
 import com.bank.miasi.konta.Pozyczka;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,8 +46,7 @@ public class RaportKontaOWiecejNiz2OperacjachBankowych implements Raport{
     public ProduktBankowy visit(Pozyczka pozyczka) {
         List<OperacjaBankowa> historia = pozyczka.getHistoria();
         
-        if (historia.size() > 2)
-        {
+        if (historia.size() > 2) {
             return pozyczka;
         }
         

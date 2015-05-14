@@ -10,5 +10,10 @@ package com.bank.miasi.wizytator;
  * @author nowekonto
  */
 public abstract class ProduktBankowy implements Element{
+
+    @Override
+    public ProduktBankowy accept(Raport raport) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

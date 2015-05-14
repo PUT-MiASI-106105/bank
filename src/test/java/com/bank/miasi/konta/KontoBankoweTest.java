@@ -57,12 +57,9 @@ public class KontoBankoweTest {
         operacjaBankowa = EasyMock.createNiceMock(OperacjaBankowa.class);
         EasyMock.expect(operacjaBankowa.getKwota()).andReturn(new BigDecimal("10.0"));
         EasyMock.replay(operacjaBankowa);
-       // EasyMock.replay(operacjaBankowa);
         Konto kontoKlient1 = new KontoBankowe(new KontoWygodne(), "41111", klient1);
         kontoKlient1.wplata(operacjaBankowa);
         
         assertEquals(new BigDecimal("10.0"), kontoKlient1.getStan());
-        // TODO review the generated test code and remove the default call to fail.
     }
-
 }

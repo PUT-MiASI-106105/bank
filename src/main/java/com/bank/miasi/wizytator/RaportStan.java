@@ -29,5 +29,4 @@ public class RaportStan implements Raport{
     public ProduktBankowy visit(Pozyczka pozyczka) {
         return pozyczka; //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

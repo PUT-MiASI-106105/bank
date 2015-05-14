@@ -82,7 +82,6 @@ public class OperacjaBankowaTest {
         assertEquals(1100.10, kontoKlient2.getStan().doubleValue(), 0);
         assertEquals(2, getHistoria(kontoKlient1).size());
         assertEquals(2, getHistoria(kontoKlient2).size());
-
     }
 
     private List<OperacjaBankowa> getHistoria(Konto kontoKlient) {
@@ -109,7 +108,6 @@ public class OperacjaBankowaTest {
         String tytul = "test";
 
         OperacjaBankowa.wykonajOperacje(managerKIR, kwota, typOperacji, tytul, kontoKlient1, kontoKlient2);
-
     }
 
     private void InicjujWartosc(double ile, Konto konto) throws NiewspieranaOperacja {
@@ -149,5 +147,4 @@ public class OperacjaBankowaTest {
         
         assertEquals(new BigDecimal("25000"), operacja.getDoKogo().getStan());
     }
-
 }

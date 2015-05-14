@@ -1,25 +1,16 @@
 package com.bank.miasi.service;
 
-import com.bank.miasi.Bank;
 import com.bank.miasi.Klient;
-import com.bank.miasi.OperacjaBankowa;
 import com.bank.miasi.dekorator.KontoBankoweDekorator;
-import com.bank.miasi.exceptions.NiewspieranaOperacja;
 import com.bank.miasi.wizytator.ProduktBankowy;
 import com.bank.miasi.wizytator.Raport;
 import com.bank.miasi.wizytator.RaportKontaTypLokataRoczna;
 import com.bank.miasi.wizytator.RaportStan;
-import com.bank.miasi.kir.ManagerKIR;
-import com.bank.miasi.konta.Konto;
 import com.bank.miasi.konta.KontoBankowe;
 import com.bank.miasi.konta.Lokata;
 import com.bank.miasi.konta.Pozyczka;
-import com.bank.miasi.konta.typy.KontoWygodne;
 import com.bank.miasi.konta.typy.LokataOptymalna;
 import com.bank.miasi.konta.typy.LokataRoczna;
-import com.bank.miasi.mediator.PrzelewyMediator;
-import com.bank.miasi.operacje.PrzelewWychodzacy;
-import com.bank.miasi.test.SymulatorZewnetrznegoKIR;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;

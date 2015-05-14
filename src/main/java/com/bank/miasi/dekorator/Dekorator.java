@@ -27,5 +27,4 @@ public class Dekorator implements Element{
     public ProduktBankowy accept(Raport raport) {
          return konto.accept(raport);
     }
-    
 }
