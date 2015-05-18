@@ -6,10 +6,13 @@
 
 package com.bank.miasi;
 
+import com.bank.di.DodajModul;
 import com.bank.miasi.konta.typy.KontoWygodne;
 import com.bank.miasi.konta.typy.LokataOptymalna;
 import com.bank.miasi.konta.typy.LokataRoczna;
 import com.bank.miasi.konta.typy.TypKonta;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import java.math.BigDecimal;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -22,6 +25,8 @@ import static org.junit.Assert.*;
  * @author Johnny
  */
 public class OdsetkiTest {
+    
+    private Injector injector;
     
     public OdsetkiTest() {
     }
@@ -36,6 +41,7 @@ public class OdsetkiTest {
     
     @Before
     public void setUp() {
+        injector = Guice.createInjector(new DodajModul());
     }
     
     @After
@@ -47,26 +53,25 @@ public class OdsetkiTest {
      */
     @org.junit.Test
     public void testObliczOdsetkiLokataRoczna() {
-        System.out.println("obliczOdsetki");
-        BigDecimal stanKonta = new BigDecimal(1000);
-        LokataRoczna lokata = new LokataRoczna();
-        
-        TypKonta typKonta = null;
-        BigDecimal expResult = new BigDecimal("20.00");
-        
-        OdsetkiStateLokataRoczna odsetki = new OdsetkiStateLokataRoczna();
-        BigDecimal result = odsetki.obliczOdsetki(stanKonta, lokata);
+         
+       OdsetkiStateLokataRoczna odsetki = injector.getInstance(OdsetkiStateLokataRoczna.class);
+       BigDecimal stanKonta = new BigDecimal(1000);
+       BigDecimal expResult = new BigDecimal("20.00");
+       
+       LokataRoczna lokata = injector.getInstance(LokataRoczna.class);
+       
+       BigDecimal result = odsetki.obliczOdsetki(stanKonta, lokata);
+
         assertEquals(expResult, result);
     }
     
     @org.junit.Test
     public void testObliczOdsetkiLokataOptymalna() {
         BigDecimal stanKonta = new BigDecimal("1000");
-        LokataOptymalna lokata = new LokataOptymalna();
         
+        OdsetkiStateLokataOptymalna odsetki = injector.getInstance(OdsetkiStateLokataOptymalna.class);
+        LokataOptymalna lokata = injector.getInstance(LokataOptymalna.class);
         BigDecimal expResult = new BigDecimal("0.29");
-        
-        OdsetkiStateLokataOptymalna odsetki = new OdsetkiStateLokataOptymalna();
         BigDecimal result = odsetki.obliczOdsetki(stanKonta, lokata);
         assertEquals(expResult, result);
     }
@@ -74,11 +79,12 @@ public class OdsetkiTest {
     @org.junit.Test
     public void testObliczOdsetkiKontoWygodne() {
         BigDecimal stanKonta = new BigDecimal("1000");
-        KontoWygodne konto = new KontoWygodne();
-        
+
+        OdsetkiStateKontoWygodne odsetki = injector.getInstance(OdsetkiStateKontoWygodne.class);
+        KontoWygodne konto = injector.getInstance(KontoWygodne.class);
         BigDecimal expResult = new BigDecimal("0.00");
-        OdsetkiStateKontoWygodne odsetki = new OdsetkiStateKontoWygodne();
         BigDecimal result = odsetki.obliczOdsetki(stanKonta, konto);
+        
         assertEquals(expResult, result);
     }
     
@@ -87,10 +93,10 @@ public class OdsetkiTest {
         
         System.out.println("obliczOdsetki");
         
-         LokataRoczna lokata = new LokataRoczna();
+         LokataRoczna lokata = injector.getInstance(LokataRoczna.class);
          BigDecimal stanKonta = new BigDecimal("100000.59");
         
-        OdsetkiStateLokataRoczna odsetki = new OdsetkiStateLokataRoczna();
+        OdsetkiStateLokataRoczna odsetki = injector.getInstance(OdsetkiStateLokataRoczna.class);
         
         BigDecimal expResult = new BigDecimal("2000.01");
     
@@ -101,10 +107,10 @@ public class OdsetkiTest {
     @org.junit.Test
     public void testObliczOdsetkiLokataOptymalna100000PLN59GR() {
         BigDecimal stanKonta = new BigDecimal("100000.59");
-        LokataOptymalna lokata = new LokataOptymalna();
-        
+        LokataOptymalna lokata = injector.getInstance(LokataOptymalna.class);
+        OdsetkiStateLokataOptymalna odsetki = injector.getInstance(OdsetkiStateLokataOptymalna.class);
         BigDecimal expResult = new BigDecimal("29.72");
-        OdsetkiStateLokataOptymalna odsetki = new OdsetkiStateLokataOptymalna();
+        
         BigDecimal result = odsetki.obliczOdsetki(stanKonta, lokata);
         assertEquals(expResult, result);
     }

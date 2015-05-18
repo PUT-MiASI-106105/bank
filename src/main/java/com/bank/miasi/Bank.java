@@ -7,6 +7,7 @@ package com.bank.miasi;
 
 import com.bank.miasi.konta.Konto;
 import com.bank.miasi.mediator.Mediator;
+import com.google.inject.Inject;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class Bank {
     private String adresBanku;
     protected Mediator mediator;
     
+    @Inject
     public Bank (Mediator mediator, List <Konto> konta, String idBanku, String nazwaBanku, String adresBanku)
     {
        this.mediator = mediator;

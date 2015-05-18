@@ -5,6 +5,7 @@
 package com.bank.miasi;
 
 import com.bank.miasi.konta.typy.TypKonta;
+import com.google.inject.Inject;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -12,12 +13,17 @@ import java.math.RoundingMode;
  *
  * @author student
  */
+
+
 public class OdsetkiStateKontoWygodne implements OdsetkiState{
 
     private static final Integer dzielnik = 300;
     private static final Integer liczbaDniRoku = 365;
     private static final Integer wynikMiejscaPoPrzecinku = 2;
     
+    
+ 
+    @Inject
     @Override
     public BigDecimal obliczOdsetki(BigDecimal stanKonta, TypKonta typKonta) {
         
